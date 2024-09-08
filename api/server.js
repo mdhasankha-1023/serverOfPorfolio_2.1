@@ -2,10 +2,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const Project = require('./Models/Projects');
+dotenv.config();
+const Project = require('../Models/Projects');
 const app = express();
 
-dotenv.config();
 app.use(cors());
 app.use(express.json());
 
