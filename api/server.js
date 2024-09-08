@@ -37,10 +37,12 @@ app.post('/projects', async (req, res) => {
     }
 });
 
-// Route to get all projects
 app.get('/projects', async (req, res) => {
+    const { page = 1, limit = 10 } = req.query;  // Default values
     try {
-        const projects = await Project.find();
+        const projects = await Project.find()
+            .limit(Number(limit))
+            .skip((Number(page) - 1) * Number(limit));
         res.status(200).json(projects);
     } catch (err) {
         res.status(500).json({ error: err.message });
