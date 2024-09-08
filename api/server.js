@@ -47,10 +47,6 @@ app.get('/projects', async (req, res) => {
     }
 });
 
-app.get('/', (req, res) => {
-    res.send('This is my portfolio server')
-})
-
 // Route to get a specific project by ID
 app.get('/projects/:id', async (req, res) => {
     const { id } = req.params;
@@ -103,6 +99,10 @@ app.delete('/projects/:id', async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 });
+
+app.get('/', (req, res) => {
+    res.send('This is my portfolio server')
+})
 
 const port = process.env.PORT || 5000;
 // server listen
